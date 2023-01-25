@@ -1,4 +1,13 @@
 import pytest
-from py.xml import html
 from selenium import webdriver
+
+session = None
+
+
+@pytest.fixture(scope="function")
+def browser():
+    browser = webdriver.Chrome()
+    yield browser
+    browser.quit()
+
 
