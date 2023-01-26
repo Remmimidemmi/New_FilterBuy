@@ -21,4 +21,5 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.SiGN_IN_EMAIL).send_keys(LogInCreds.SIGN_IN_EMAIL)
         self.browser.find_element(*LoginPageLocators.SIGN_IN_PASSWORD).send_keys(LogInCreds.SIGN_IN_PASSWORD)
         self.browser.find_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
-        self.hello_message()
+        assert self.hello_message(), "Login failed!"
+        print("Login success!")
