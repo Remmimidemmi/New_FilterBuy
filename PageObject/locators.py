@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 class MainPageLocators():
     MY_ACCOUNT_BUTTON = (By.CSS_SELECTOR, "#hdr-mr > span:nth-child(1) > a > i")
     HELLO_USERNAME = (By.CSS_SELECTOR, "#container > div.account-username > span")
+    REQUEST_SALES_USER_FIELD = (By.CSS_SELECTOR, "#id_registration_info")
+    BECOME_SALES_USER_BUTTON = (By.CSS_SELECTOR, "button.btn")
 
 
 class LoginPageLocators():

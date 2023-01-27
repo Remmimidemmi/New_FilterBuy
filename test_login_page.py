@@ -1,9 +1,7 @@
 import time
-
-import pytest
-
-from .PageObject.URLs import Urls
 from .PageObject.login_page import LoginPage
+from .PageObject.URLs import Urls
+import pytest
 
 
 @pytest.mark.test_1

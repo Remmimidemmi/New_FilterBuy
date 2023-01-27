@@ -4,6 +4,7 @@ import time
 
 class Urls:
     REACT_MAIN_PAGE = "https://admin:admin!2@react.test.filterbuytest.com/"
+    REACT_REQUEST_NEW_SALES_USER = "https://react.test.filterbuytest.com/outside-sales/registration/"
 
 
 class RegistrationCreds:
