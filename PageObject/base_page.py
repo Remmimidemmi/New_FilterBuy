@@ -32,4 +32,4 @@ class BasePage():
         self.browser.find_element(*MainPageLocators.REQUEST_SALES_USER_FIELD).send_keys("Test" + str(
             random.randint(1, 99999)))
         time.sleep(5)
-        #self.browser.find_element(*MainPageLocators.BECOME_SALES_USER_BUTTON).click()
+        self.browser.find_element(*MainPageLocators.BECOME_SALES_USER_BUTTON).click()
