@@ -2,7 +2,7 @@ import time
 import pytest
 from ..PageObject.URLs import Urls
 from ..PageObject.base_page import BasePage
-from ..PageObject.login_page import LoginPage
+from ..PageObject.login_page import LoginPage, user_registration_creds
 from ..PageObject.react_admin_page import ReactAdminPage
 
 
@@ -26,7 +26,7 @@ class TestSalesUser:
         logout_page = LoginPage(browser)
         logout_page.common_user_logout()
         logout_page.account_page()
-        logout_page.repeat_login_after_registration()
+        logout_page.user_login(user_registration_creds()[0], user_registration_creds()[1])
         sales_user_page = ReactAdminPage(browser)
         sales_user_page.go_to_sales_user()
         time.sleep(2)

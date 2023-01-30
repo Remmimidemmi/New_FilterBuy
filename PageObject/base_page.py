@@ -22,7 +22,9 @@ class BasePage():
         hello_user = self.browser.find_element(*MainPageLocators.HELLO_USERNAME)
         text_hello_user = hello_user.text
         user_name = text_hello_user[7:]
-        return user_name
+        yield user_name
+        assert hello_user, "Login failed!"
+        print(f"Login success!\nHello {user_name}!")
 
     def reg_hello_message_check(self):
         assert self.hello_message() == RegistrationCreds.FIRST_NAME, "Registration failed!"

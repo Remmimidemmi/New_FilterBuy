@@ -1,7 +1,7 @@
 import time
 import pytest
 
-from ..PageObject.URLs import Urls
+from ..PageObject.URLs import Urls, LogInCreds
 from ..PageObject.login_page import LoginPage
 
 
@@ -19,16 +19,17 @@ class TestPositive():
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
         page.account_page()
-        page.common_user_login()
+        page.user_login(LogInCreds.SIGN_IN_EMAIL, LogInCreds.SIGN_IN_PASSWORD)
+        page.hello_message()
 
-
+@pytest.mark.negative
 class TestNegative():
     @pytest.mark.test_3
     def test_incorrect_pass_login(self, browser):
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
         page.account_page()
-        page.incorrect_password_login()
+        page.user_login(LogInCreds.SIGN_IN_EMAIL, LogInCreds.SIGN_IN_PASSWORD_INCORRECT)
         page.error_login_message()
 
     @pytest.mark.test_4
@@ -36,5 +37,5 @@ class TestNegative():
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
         page.account_page()
-        page.incorrect_email_login()
+        page.user_login(LogInCreds.SIGN_IN_EMAIL_INCORRECT, LogInCreds.SIGN_IN_PASSWORD)
         page.error_login_message()
