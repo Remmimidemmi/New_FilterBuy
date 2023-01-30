@@ -29,4 +29,4 @@ class TestSalesUser:
         logout_page.repeat_login_after_registration()
         sales_user_page = ReactAdminPage(browser)
         sales_user_page.go_to_sales_user()
-        time.sleep(5)
+        time.sleep(2)

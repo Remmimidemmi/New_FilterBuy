@@ -20,6 +20,8 @@ class RegistrationCreds:
 class LogInCreds:
     SIGN_IN_EMAIL = "test1@test.test"
     SIGN_IN_PASSWORD = "123"
+    SIGN_IN_EMAIL_INCORRECT = "test0@test.test"
+    SIGN_IN_PASSWORD_INCORRECT = "1234"
 
 
 class AdminCreds:

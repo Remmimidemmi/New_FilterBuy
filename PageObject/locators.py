@@ -21,6 +21,8 @@ class LoginPageLocators():
     SiGN_IN_EMAIL = (By.CSS_SELECTOR, "#login-email")
     SIGN_IN_PASSWORD = (By.CSS_SELECTOR, "#login-password")
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, "#submit-login")
+    ERROR_LOGIN_MESSAGE = (By.CSS_SELECTOR, "#error-login > p:nth-child(1)")
+    RESET_PASSWORD_LINK = (By.CSS_SELECTOR, "#reset-your-password")
 
 
 class ReactAdminLocators():

@@ -1,3 +1,5 @@
+from selenium.common import NoSuchElementException, TimeoutException
+
 from .base_page import BasePage
 from .locators import LoginPageLocators, MainPageLocators
 from .URLs import RegistrationCreds, LogInCreds
@@ -52,3 +54,37 @@ class LoginPage(BasePage):
             self.user_registration_creds()[1]
         )
         self.browser.find_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
+
+    def incorrect_password_login(self):
+        self.browser.find_element(*LoginPageLocators.SiGN_IN_EMAIL).send_keys(
+            LogInCreds.SIGN_IN_EMAIL
+        )
+        self.browser.find_element(*LoginPageLocators.SIGN_IN_PASSWORD).send_keys(
+            LogInCreds.SIGN_IN_PASSWORD_INCORRECT
+        )
+        self.browser.find_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
+
+    def incorrect_email_login(self):
+        self.browser.find_element(*LoginPageLocators.SiGN_IN_EMAIL).send_keys(
+            LogInCreds.SIGN_IN_EMAIL_INCORRECT
+        )
+        self.browser.find_element(*LoginPageLocators.SIGN_IN_PASSWORD).send_keys(
+            LogInCreds.SIGN_IN_PASSWORD
+        )
+        self.browser.find_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
+
+    def error_login_message(self):
+        try:
+            error_message = WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located(
+                    LoginPageLocators.ERROR_LOGIN_MESSAGE
+                ))
+            text_error_message = error_message.text
+            exp_message = "Invalid username/password. Please try again."
+            assert text_error_message == exp_message, f"EXPECTED:\n{exp_message}\nACTUAL:\n{text_error_message}"
+            print("Message correct!")
+        finally:
+            reset_link = WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable(
+                    LoginPageLocators.RESET_PASSWORD_LINK
+                ))
+            assert reset_link, "Link is not clickable!"
+            print("Link is clickable!")
