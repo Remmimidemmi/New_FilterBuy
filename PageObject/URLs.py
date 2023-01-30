@@ -21,6 +21,6 @@ class LogInCreds:
     SIGN_IN_EMAIL = "test1@test.test"
     SIGN_IN_PASSWORD = "123"
 
+
 class AdminCreds:
     REACT_ADMIN = "vlad.sh+admin@core-tech.ru"
-
