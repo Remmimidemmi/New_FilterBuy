@@ -22,11 +22,4 @@ class ReactAdminPage(BasePage):
         self.browser.find_element(*MainPageLocators.USER_MY_ACCOUNT_BUTTON).click()
         self.browser.find_element(*MainPageLocators.SALES_LINK_TAB).click()
 
-    # def repeat_login(self):
 
-    # def go_to_outside_salers(self):
-    #     self.browser.find_element(By.CSS_SELECTOR, "#adminmenu > li:nth-child(3) > a").click()
-    #     self.browser.find_element(
-    #         By.CSS_SELECTOR, "#adminmenu > li:nth-child(3) > div.wp-submenu > div > ul > li:nth-child(10) > a").click()
-    #     self.browser.find_element(
-    #         By.CSS_SELECTOR, "#content-main > div > table > tbody > tr.model-outsidesalesuser > th > a").click()

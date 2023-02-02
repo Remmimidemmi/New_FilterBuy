@@ -9,6 +9,8 @@ class Urls:
     REACT_MAIN_PAGE = "https://admin:admin!2@react.test.filterbuytest.com/"
     REACT_REQUEST_NEW_SALES_USER = "https://admin:admin!2@react.test.filterbuytest.com/outside-sales/registration/"
 
+    REAL_EMAIL_URL = "https://www.google.com/gmail/about/"
+
 
 class RegistrationCreds:
     REGISTRATION_EMAIL = "user_" + str(time.time()) + "@test.test"
@@ -19,9 +21,11 @@ class RegistrationCreds:
 
 class LogInCreds:
     SIGN_IN_EMAIL = "test1@test.test"
+    SIGN_IN_REAL_EMAIL = "zast0tsaz@gmail.com"
     SIGN_IN_PASSWORD = "123"
     SIGN_IN_EMAIL_INCORRECT = "test0@test.test"
     SIGN_IN_PASSWORD_INCORRECT = "1234"
+
 
 
 class AdminCreds:

@@ -21,8 +21,17 @@ class LoginPageLocators():
     SiGN_IN_EMAIL = (By.CSS_SELECTOR, "#login-email")
     SIGN_IN_PASSWORD = (By.CSS_SELECTOR, "#login-password")
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, "#submit-login")
-    ERROR_LOGIN_MESSAGE = (By.CSS_SELECTOR, "#error-login > p:nth-child(1)")
+    ERROR_LOGIN_MESSAGE = (By.CSS_SELECTOR, "#error-login")
+    ERROR_RESET_PASSWORD_MESSAGE = (By.CSS_SELECTOR, "#password-reset-error")
     RESET_PASSWORD_LINK = (By.CSS_SELECTOR, "#reset-your-password")
+    FORGOT_PASSWORD_LINK = (By.CSS_SELECTOR, "#password-reset")
+    SIGN_UP_LINK_AFTER_FORGOT = (By.CSS_SELECTOR, "#password-reset-signup")
+    RESET_PASSWORD_FIELD = (By.CSS_SELECTOR, "#password-reset-email")
+    RESET_PASSWORD_SUBMIT_BTN = (By.CSS_SELECTOR, "#password-reset-submit")
+    NEW_PASSWORD_RESET_FIELD = (By.CSS_SELECTOR, "#id_new_password1")
+    CONFIRM_PASSWORD_RESET_FIELD = (By.CSS_SELECTOR, "#id_new_password2")
+    SUBMIT_BUTTON_RESET_PASSWORD = (By.CSS_SELECTOR, "#reset-submit")
+
 
 
 class ReactAdminLocators():
@@ -31,3 +40,5 @@ class ReactAdminLocators():
     LOGIN_BUTTON = (By.CSS_SELECTOR, "#bottombar > button:nth-child(1)")
     FIRST_CHECKBOX_ACTIVE = (By.CSS_SELECTOR, "#id_form-0-active")
     SAVE_BUTTON = (By.CSS_SELECTOR, "#bottombar > button")
+
+

@@ -1,3 +1,5 @@
+from selenium.common import NoSuchElementException
+
 from .locators import LoginPageLocators, MainPageLocators
 from .URLs import RegistrationCreds
 import random
@@ -22,15 +24,22 @@ class BasePage():
         hello_user = self.browser.find_element(*MainPageLocators.HELLO_USERNAME)
         text_hello_user = hello_user.text
         user_name = text_hello_user[7:]
-        yield user_name
-        assert hello_user, "Login failed!"
         print(f"Login success!\nHello {user_name}!")
+        return user_name
 
     def reg_hello_message_check(self):
         assert self.hello_message() == RegistrationCreds.FIRST_NAME, "Registration failed!"
-        print(f'Success! {self.hello_message()} is register!')
+        print(f'Registration of {self.hello_message()} correct!')
 
     def reg_sales_user(self):
         self.browser.find_element(*MainPageLocators.REQUEST_SALES_USER_FIELD).send_keys("Test" + str(
             random.randint(1, 99999)))
         self.browser.find_element(*MainPageLocators.BECOME_SALES_USER_BUTTON).click()
+
+    def go_to_url(self, url):
+        while True:
+            try:
+                self.browser.get(url)
+                break
+            except:
+                time.sleep(10)
