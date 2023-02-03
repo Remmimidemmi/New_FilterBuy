@@ -1,7 +1,10 @@
 import time
 import pytest
+from selenium.common import NoSuchElementException
+
+from ..PageObject.data import LogInCreds, RegistrationCreds
 from ..PageObject.locators import LoginPageLocators
-from ..PageObject.URLs import Urls, LogInCreds, RegistrationCreds
+from ..PageObject.URLs import Urls
 from ..PageObject.login_page import LoginPage
 from ..PageObject.inscriptions import ErrorMessages
 
@@ -27,7 +30,8 @@ class TestPositive():
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
         page.account_page()
-        page.forgot_password_login_page(LogInCreds.SIGN_IN_REAL_EMAIL)
+        page.forgot_password_login_page(email=LogInCreds.SIGN_IN_REAL_EMAIL)
+        time.sleep(3)
         page.change_password_from_login_page(RegistrationCreds.PASSWORD)
         page.hello_message()
 
@@ -53,13 +57,14 @@ class TestNegative():
                                  LoginPageLocators.RESET_PASSWORD_LINK)
 
     @pytest.mark.test_6
-    @pytest.mark.xfail
+    #@pytest.mark.xfail
     def test_without_creds_login(self, browser):
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
         page.account_page()
         page.signin_button()
         page.hello_message()
+        assert NoSuchElementException
 
     @pytest.mark.test_7
     def test_forgot_password_incorrect_email(self, browser):

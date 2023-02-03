@@ -33,7 +33,6 @@ class LoginPageLocators():
     SUBMIT_BUTTON_RESET_PASSWORD = (By.CSS_SELECTOR, "#reset-submit")
 
 
-
 class ReactAdminLocators():
     SIGN_IN_EMAIL = (By.CSS_SELECTOR, "#id_username")
     SIGN_IN_PASSWORD = (By.CSS_SELECTOR, "#id_password")
@@ -41,4 +40,11 @@ class ReactAdminLocators():
     FIRST_CHECKBOX_ACTIVE = (By.CSS_SELECTOR, "#id_form-0-active")
     SAVE_BUTTON = (By.CSS_SELECTOR, "#bottombar > button")
 
+
+class NewCustomersLocators():
+    BUSINESS_NAME = (By.CSS_SELECTOR, "#completeName")
+    CREDIT_TERMS_CHECKBOX = (By.XPATH, "//*[@id='root']/div[1]/div[3]/div/div/main/div/div/form/div/div/div["
+                                       "1]/div[1]/div[1]/label[1]/span[1]/span[1]/input")
+    TAX_EXEMPT_CHECKBOX = (By.XPATH, "//*[@id='root']/div[1]/div[3]/div/div/main/div/div/form/div/div/div[1]/div["
+                                     "1]/div[1]/label[2]/span[1]/span[1]/input")
 

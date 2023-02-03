@@ -1,12 +1,13 @@
 from selenium.common import NoSuchElementException
 
-from .locators import LoginPageLocators, MainPageLocators
-from .URLs import RegistrationCreds
+from .locators import MainPageLocators
 import random
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
 from selenium.webdriver.support.wait import WebDriverWait
+
+from .data import RegistrationCreds
 
 
 class BasePage():

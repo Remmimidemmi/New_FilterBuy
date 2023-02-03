@@ -1,7 +1,8 @@
 import time
-from ..PageObject.URLs import AdminCreds, LogInCreds
-from ..PageObject.base_page import BasePage
-from ..PageObject.locators import ReactAdminLocators, MainPageLocators
+
+from .data import AdminCreds, LogInCreds
+from .base_page import BasePage
+from .locators import ReactAdminLocators, MainPageLocators
 
 
 class ReactAdminPage(BasePage):

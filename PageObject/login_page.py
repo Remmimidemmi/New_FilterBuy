@@ -2,9 +2,10 @@ from selenium.common import NoSuchElementException, TimeoutException
 
 from .base_page import BasePage
 from .locators import LoginPageLocators, MainPageLocators
-from .URLs import RegistrationCreds, LogInCreds
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+from .data import RegistrationCreds
 from ..mail import ReadLettersFromGmail
 import time
 
