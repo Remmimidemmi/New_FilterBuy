@@ -19,7 +19,7 @@ class ReadLettersFromGmail:
         imap.login(self.username, self.password)
         imap.select("INBOX")
         result, data = imap.search(None, "ALL")
-        ids = data[0]  # Получаем сроку номеров писем
+        ids = data[0]  # Получаем строку номеров писем
         id_list = ids.split()  # Разделяем ID писем
         latest_email_id = id_list[-1]  # Берем последний ID
         res, msg = imap.fetch(latest_email_id, '(RFC822)')

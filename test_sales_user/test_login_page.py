@@ -7,6 +7,7 @@ from ..PageObject.locators import LoginPageLocators
 from ..PageObject.URLs import Urls
 from ..PageObject.login_page import LoginPage
 from ..PageObject.inscriptions import ErrorMessages
+from ..mail import ReadLettersFromGmail
 
 
 class TestPositive():
@@ -75,3 +76,8 @@ class TestNegative():
         page.error_login_message(LoginPageLocators.ERROR_RESET_PASSWORD_MESSAGE,
                                  ErrorMessages.ERROR_RESET_PASSWORD_MESSAGE,
                                  LoginPageLocators.SIGN_UP_LINK_AFTER_FORGOT)
+
+@pytest.mark.test_test
+def test_mail(browser):
+    page = ReadLettersFromGmail()
+    page.read_mess_from_email()
