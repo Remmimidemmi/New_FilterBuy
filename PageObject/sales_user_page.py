@@ -4,6 +4,7 @@ from .base_page import BasePage
 from .data import NewCustomerData
 from .locators import NewCustomersLocators
 
+
 class SalesUserPage(BasePage):
     def new_customer_information(self):
         self.browser.find_element(*NewCustomersLocators.BUSINESS_NAME).send_keys(NewCustomerData.BUSINESS_NAME)

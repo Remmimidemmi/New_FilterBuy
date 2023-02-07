@@ -58,7 +58,7 @@ class TestNegative():
                                  LoginPageLocators.RESET_PASSWORD_LINK)
 
     @pytest.mark.test_6
-    #@pytest.mark.xfail
+    # @pytest.mark.xfail
     def test_without_creds_login(self, browser):
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
@@ -77,7 +77,9 @@ class TestNegative():
                                  ErrorMessages.ERROR_RESET_PASSWORD_MESSAGE,
                                  LoginPageLocators.SIGN_UP_LINK_AFTER_FORGOT)
 
-@pytest.mark.test_test
-def test_mail(browser):
-    page = ReadLettersFromGmail()
-    page.read_mess_from_email()
+
+# @pytest.mark.test_test
+# def test_mail(browser):
+#     page = ReadLettersFromGmail().return_link_for_reset_password()
+#     #page.read_mess_from_email()
+#     #return_link_for_reset_password()
