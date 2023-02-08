@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class MainPageLocators():
+class MainPageLocators:
     MY_ACCOUNT_BUTTON = (By.CSS_SELECTOR, "#hdr-mr > span:nth-child(1) > a > i")
     HELLO_USERNAME = (By.CSS_SELECTOR, "#container > div.account-username > span")
     REQUEST_SALES_USER_FIELD = (By.CSS_SELECTOR, "#id_registration_info")
@@ -11,7 +11,7 @@ class MainPageLocators():
     LOGOUT_BUTTON = (By.CSS_SELECTOR, "#account-drop-logout > a")
 
 
-class LoginPageLocators():
+class LoginPageLocators:
     SIGN_UP_EMAIL = (By.CSS_SELECTOR, "#signup-email")
     SIGN_UP_PASSWORD = (By.CSS_SELECTOR, "#signup-password")
     SIGN_UP_CONFIRM_PASSWORD = (By.CSS_SELECTOR, "#signup-confirm_password")
@@ -33,7 +33,7 @@ class LoginPageLocators():
     SUBMIT_BUTTON_RESET_PASSWORD = (By.CSS_SELECTOR, "#reset-submit")
 
 
-class ReactAdminLocators():
+class ReactAdminLocators:
     SIGN_IN_EMAIL = (By.CSS_SELECTOR, "#id_username")
     SIGN_IN_PASSWORD = (By.CSS_SELECTOR, "#id_password")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "#bottombar > button:nth-child(1)")
@@ -41,10 +41,24 @@ class ReactAdminLocators():
     SAVE_BUTTON = (By.CSS_SELECTOR, "#bottombar > button")
 
 
-class NewCustomersLocators():
+class NewCustomersLocators:
     BUSINESS_NAME = (By.CSS_SELECTOR, "#completeName")
     CREDIT_TERMS_CHECKBOX = (By.XPATH, "//*[@id='root']/div[1]/div[3]/div/div/main/div/div/form/div/div/div["
                                        "1]/div[1]/div[1]/label[1]/span[1]/span[1]/input")
     TAX_EXEMPT_CHECKBOX = (By.XPATH, "//*[@id='root']/div[1]/div[3]/div/div/main/div/div/form/div/div/div[1]/div["
                                      "1]/div[1]/label[2]/span[1]/span[1]/input")
-
+    EMAIL = (By.CSS_SELECTOR, "#main_contact\.email")
+    FIRST_NAME = (By.CSS_SELECTOR, "#main_contact\.first_name")
+    LAST_NAME = (By.CSS_SELECTOR, "#main_contact\.last_name")
+    PHONE_NUMBER = (By.XPATH, '//*[@id="main_contact.phone_number"]')
+    SUBMIT_CUSTOMER_BTN = (By.XPATH, "/html/body/div[1]/div[4]/div[2]/div[1]/div["
+                                     "3]/div/div/main/div/div/form/div/div/div[2]/button")
+    COMPANY_NAME = (By.CSS_SELECTOR, "#shipping_address\.company_name")
+    ATTN = (By.CSS_SELECTOR, "#shipping_address\.attn")
+    STREET_ADDRESS = (By.CSS_SELECTOR, "#shipping_address\.address_line_1")
+    TOWN_CITY = (By.CSS_SELECTOR, "#shipping_address\.city")
+    STATE = (By.XPATH, '//*[@id="shipping_address.state"]')
+    POSTCODE_ZIP = (By.CSS_SELECTOR, "#shipping_address\.postal_code")
+    CUSTOMERS_LIST_NEW_CUSTOMER = (By.CSS_SELECTOR, "div.Mui-even:nth-child(1) > div:nth-child(2) > a:nth-child(1)")
+    ALABAMA = (By.CSS_SELECTOR, '#shipping_address.state-option-0')
+    EMPTY_FIELD_NEW_CUSTOMER_MESSAGE = (By.CSS_SELECTOR, "#completeName-helper-text")

@@ -3,3 +3,4 @@ class ErrorMessages:
                           "or created\nan account, you can also reset your password."
     ERROR_RESET_PASSWORD_MESSAGE = "This email address you entered is not in our system. " \
                                    "Please sign up to create\nan account or enter a different email address."
+    EMPTY_FIELD_ERROR_MESSAGE = "Field should be of minimum 2 characters length"

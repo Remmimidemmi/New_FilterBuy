@@ -45,8 +45,8 @@ class TestNegative():
         page = LoginPage(browser)
         page.account_page()
         page.user_login(LogInCreds.SIGN_IN_EMAIL, LogInCreds.SIGN_IN_PASSWORD_INCORRECT)
-        page.error_login_message(LoginPageLocators.ERROR_LOGIN_MESSAGE, ErrorMessages.LOGIN_ERROR_MESSAGE,
-                                 LoginPageLocators.RESET_PASSWORD_LINK)
+        page.error_message(LoginPageLocators.ERROR_LOGIN_MESSAGE, ErrorMessages.LOGIN_ERROR_MESSAGE)
+        page.error_link(LoginPageLocators.RESET_PASSWORD_LINK)
 
     @pytest.mark.test_5
     def test_incorrect_email_login(self, browser):
@@ -54,8 +54,8 @@ class TestNegative():
         page = LoginPage(browser)
         page.account_page()
         page.user_login(LogInCreds.SIGN_IN_EMAIL_INCORRECT, LogInCreds.SIGN_IN_PASSWORD)
-        page.error_login_message(LoginPageLocators.ERROR_LOGIN_MESSAGE, ErrorMessages.LOGIN_ERROR_MESSAGE,
-                                 LoginPageLocators.RESET_PASSWORD_LINK)
+        page.error_message(LoginPageLocators.ERROR_LOGIN_MESSAGE, ErrorMessages.LOGIN_ERROR_MESSAGE)
+        page.error_link(LoginPageLocators.SIGN_UP_LINK_AFTER_FORGOT)
 
     @pytest.mark.test_6
     # @pytest.mark.xfail
@@ -73,11 +73,9 @@ class TestNegative():
         page = LoginPage(browser)
         page.account_page()
         page.forgot_password_login_page(LogInCreds.SIGN_IN_EMAIL_INCORRECT)
-        page.error_login_message(LoginPageLocators.ERROR_RESET_PASSWORD_MESSAGE,
-                                 ErrorMessages.ERROR_RESET_PASSWORD_MESSAGE,
-                                 LoginPageLocators.SIGN_UP_LINK_AFTER_FORGOT)
-
-
+        page.error_message(LoginPageLocators.ERROR_RESET_PASSWORD_MESSAGE,
+                           ErrorMessages.ERROR_RESET_PASSWORD_MESSAGE)
+        page.error_link(LoginPageLocators.SIGN_UP_LINK_AFTER_FORGOT)
 # @pytest.mark.test_test
 # def test_mail(browser):
 #     page = ReadLettersFromGmail().return_link_for_reset_password()

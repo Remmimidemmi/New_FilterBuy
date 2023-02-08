@@ -37,6 +37,17 @@ class BasePage:
             random.randint(1, 99999)))
         self.browser.find_element(*MainPageLocators.BECOME_SALES_USER_BUTTON).click()
 
+    def error_message(self, message, exp_message):
+        error_message = WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located(message))
+        text_error_message = error_message.text
+        assert text_error_message == exp_message, f"EXPECTED:\n{exp_message}\nACTUAL:\n{text_error_message}"
+        print("\nMessage correct!")
+
+    def error_link(self, link):
+        error_link = WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable(link))
+        assert error_link, "Link is not clickable!"
+        print("Link is clickable!")
+
     def go_to_url(self, url):
         while True:
             try:

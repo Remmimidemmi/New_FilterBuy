@@ -46,17 +46,6 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.SIGN_IN_PASSWORD).send_keys(self.password)
         self.browser.find_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
 
-    def error_login_message(self, message, exp_message, link):
-        try:
-            error_message = WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located(message))
-            text_error_message = error_message.text
-            assert text_error_message == exp_message, f"EXPECTED:\n{exp_message}\nACTUAL:\n{text_error_message}"
-            print("Message correct!")
-        finally:
-            error_link = WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable(link))
-            assert error_link, "Link is not clickable!"
-            print("Link is clickable!")
-
     def forgot_password_login_page(self, email):
         self.browser.find_element(*LoginPageLocators.FORGOT_PASSWORD_LINK).click()
         self.browser.find_element(*LoginPageLocators.RESET_PASSWORD_FIELD).send_keys(email)
@@ -68,5 +57,3 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.NEW_PASSWORD_RESET_FIELD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.CONFIRM_PASSWORD_RESET_FIELD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.SUBMIT_BUTTON_RESET_PASSWORD).click()
-
-

@@ -19,8 +19,6 @@ class ReactAdminPage(BasePage):
         self.browser.find_element(*ReactAdminLocators.FIRST_CHECKBOX_ACTIVE).click()
         self.browser.find_element(*ReactAdminLocators.SAVE_BUTTON).click()
 
-    def go_to_sales_user(self):
-        self.browser.find_element(*MainPageLocators.USER_MY_ACCOUNT_BUTTON).click()
-        self.browser.find_element(*MainPageLocators.SALES_LINK_TAB).click()
+
 
 
