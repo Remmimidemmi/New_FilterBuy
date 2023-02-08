@@ -60,5 +60,17 @@ class NewCustomersLocators:
     STATE = (By.XPATH, '//*[@id="shipping_address.state"]')
     POSTCODE_ZIP = (By.CSS_SELECTOR, "#shipping_address\.postal_code")
     CUSTOMERS_LIST_NEW_CUSTOMER = (By.CSS_SELECTOR, "div.Mui-even:nth-child(1) > div:nth-child(2) > a:nth-child(1)")
+    CUSTOMERS_LIST_CUSTOMER_NAME = (By.XPATH, '//*[@id="customersTable"]/div/div[2]/div['
+                                                     '2]/div/div/div/div/div/div[1]/div[1]')
     ALABAMA = (By.CSS_SELECTOR, '#shipping_address.state-option-0')
     EMPTY_FIELD_NEW_CUSTOMER_MESSAGE = (By.CSS_SELECTOR, "#completeName-helper-text")
+    CUSTOMERS_TAB = (By.XPATH, '//*[@id="appBar"]/nav/a[4]')
+    MASK_BUTTON = (By.XPATH, '//*[@id="customersTable"]/div/div[2]/div[2]/div/div/div/div/div/div[1]/div['
+                             '5]/span[4]/button')
+    HELLO_BUSINESS_USER_TEXT = (By.CSS_SELECTOR, "#account-header")
+    CUSTOMER_DETAILS_BUTTON = (By.XPATH, '//*[@id="customersTable"]/div/div[2]/div[2]/div/div/div/div/div/div[1]/div['
+                                         '5]/span[1]/a')
+    USER_NAME_FROM_DETAILS = (By.XPATH, '//*[@id="root"]/div[1]/div[3]/div/div/main/div/div/h2/text()')
+    CUSTOMER_INFORMATION_INSCR = (By.XPATH, '//*[@id="root"]/div[1]/div[3]/div/div/main/div/div/div/div[1]/div[1]/h2')
+
+

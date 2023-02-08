@@ -1,4 +1,8 @@
+import time
+
 from selenium.webdriver.common.keys import Keys
+
+from .URLs import Urls
 from .base_page import BasePage
 from .data import NewCustomerData, RegistrationCreds
 from .locators import NewCustomersLocators, MainPageLocators
@@ -8,6 +12,32 @@ class SalesUserPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.email = RegistrationCreds.REGISTRATION_EMAIL
+
+    def go_to_customers_tab(self):
+        self.browser.find_element(*NewCustomersLocators.CUSTOMERS_TAB).click()
+
+    def go_to_mask_user(self):
+        self.go_to_customers_tab()
+        user = self.browser.find_element(
+            *NewCustomersLocators.CUSTOMERS_LIST_NEW_CUSTOMER).text.split('@')[0]
+        self.browser.find_element(*NewCustomersLocators.MASK_BUTTON).click()
+        user_to_mask = self.browser.find_element(
+            *NewCustomersLocators.HELLO_BUSINESS_USER_TEXT).text[7:-1]
+        current_link = self.browser.current_url
+        assert user_to_mask == user \
+               and current_link == Urls.REACT_MASK_BUSINESS_USER, \
+            f"Mask unsuccessful!\nUser to mask:\n{user_to_mask}\nUser:\n{user}\nLink:\n{current_link}"
+        print(f"Redirect on link:\n{current_link}\nto mask business user:\n{user}!")
+
+    def go_to_customer_details(self):
+        self.go_to_customers_tab()
+        user_to_details = self.browser.find_element(*NewCustomersLocators.CUSTOMERS_LIST_CUSTOMER_NAME).text
+        self.browser.find_element(*NewCustomersLocators.CUSTOMER_DETAILS_BUTTON).click()
+        user_from_details = self.browser.find_element(*NewCustomersLocators.USER_NAME_FROM_DETAILS).text
+        customer_information = self.browser.find_element(*NewCustomersLocators.CUSTOMER_INFORMATION_INSCR).text
+        assert user_to_details == user_from_details, f"Details button doesn't work correctly!" \
+                                                     f"\n{user_from_details}\n!=\n{user_to_details}"
+        print(f"Details button work correctly:\n{customer_information}\n{user_to_details} == {user_from_details}")
 
     def new_customer_correct_email(self):
         self.browser.find_element(*NewCustomersLocators.EMAIL).send_keys(self.email)

@@ -87,5 +87,21 @@ class TestNewCustomer():
         page.new_shipping_address()
         page.submit_button()
 
-# @pytest.mark.test_test
-# def test_test():
+    @pytest.mark.test_6
+    def test_mask_button_from_customers(self, browser):
+        page = SalesUserPage(browser)
+        page.go_to_sales_user()
+        page.go_to_mask_user()
+
+    @pytest.mark.test_7
+    def test_customers_details(self, browser):
+        page = SalesUserPage(browser)
+        page.go_to_sales_user()
+        page.go_to_customer_details()
+
+    # @pytest.mark.test_test
+    # def test_test(self, browser):
+    #     page = SalesUserPage(browser)
+    #     page.go_to_sales_user()
+    #     page.go_to_customers_tab()
+    #     time.sleep(15)
