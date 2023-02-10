@@ -9,9 +9,9 @@ from .locators import NewCustomersLocators, MainPageLocators
 
 
 class SalesUserPage(BasePage):
-    def __init__(self, browser):
-        super().__init__(browser)
-        self.email = RegistrationCreds.REGISTRATION_EMAIL
+    # def __init__(self, browser):# пересмотреть
+    #     super().__init__(browser)
+    #     self.email = RegistrationCreds.REGISTRATION_EMAIL
 
     def go_to_customers_tab(self):
         self.browser.find_element(*NewCustomersLocators.CUSTOMERS_TAB).click()
@@ -20,7 +20,10 @@ class SalesUserPage(BasePage):
         self.go_to_customers_tab()
         user = self.browser.find_element(
             *NewCustomersLocators.CUSTOMERS_LIST_NEW_CUSTOMER).text.split('@')[0]
-        self.browser.find_element(*NewCustomersLocators.MASK_BUTTON).click()
+        mask_button = self.browser.find_element(*NewCustomersLocators.MASK_BUTTON)
+        self.browser.execute_script(
+            "return arguments[0].scrollIntoView(true);", mask_button)
+        mask_button.click()
         user_to_mask = self.browser.find_element(
             *NewCustomersLocators.HELLO_BUSINESS_USER_TEXT).text[7:-1]
         current_link = self.browser.current_url
@@ -31,16 +34,23 @@ class SalesUserPage(BasePage):
 
     def go_to_customer_details(self):
         self.go_to_customers_tab()
-        user_to_details = self.browser.find_element(*NewCustomersLocators.CUSTOMERS_LIST_CUSTOMER_NAME).text
-        self.browser.find_element(*NewCustomersLocators.CUSTOMER_DETAILS_BUTTON).click()
-        user_from_details = self.browser.find_element(*NewCustomersLocators.USER_NAME_FROM_DETAILS).text
-        customer_information = self.browser.find_element(*NewCustomersLocators.CUSTOMER_INFORMATION_INSCR).text
+        user_to_details = self.browser.find_element(
+            *NewCustomersLocators.CUSTOMERS_LIST_CUSTOMER_NAME).text
+        details_button = self.browser.find_element(
+            *NewCustomersLocators.CUSTOMER_DETAILS_BUTTON)
+        self.browser.execute_script(
+            "return arguments[0].scrollIntoView(true);", details_button)
+        details_button.click()
+        user_from_details = self.browser.find_element(
+            *NewCustomersLocators.USER_NAME_FROM_DETAILS).text
+        customer_information = self.browser.find_element(
+            *NewCustomersLocators.CUSTOMER_INFORMATION_INSCR).text
         assert user_to_details == user_from_details, f"Details button doesn't work correctly!" \
                                                      f"\n{user_from_details}\n!=\n{user_to_details}"
-        print(f"Details button work correctly:\n{customer_information}\n{user_to_details} == {user_from_details}")
+        print(f"\nDetails button work correctly:\n{customer_information}\n{user_to_details} == {user_from_details}")
 
-    def new_customer_correct_email(self):
-        self.browser.find_element(*NewCustomersLocators.EMAIL).send_keys(self.email)
+    def new_customer_correct_email(self, email):
+        self.browser.find_element(*NewCustomersLocators.EMAIL).send_keys(email)
 
     def new_customer_incorrect_email(self):
         self.browser.find_element(*NewCustomersLocators.EMAIL).send_keys(RegistrationCreds.INCORRECT_REGISTRATION_EMAIL)
@@ -76,7 +86,7 @@ class SalesUserPage(BasePage):
     def submit_button(self):
         self.browser.find_element(*NewCustomersLocators.SUBMIT_CUSTOMER_BTN).click()
 
-    def new_customer_check(self):
+    def new_customer_check(self, email):
         new_customer_email = self.browser.find_element(*NewCustomersLocators.CUSTOMERS_LIST_NEW_CUSTOMER).text
-        assert new_customer_email == self.email, "New customer is not found!"
-        print(f"\nNew customer:{new_customer_email}\n==\n{self.email}")
+        assert new_customer_email == email, "New customer is not found!"
+        print(f"\nNew customer:{new_customer_email}\n==\n{email}")

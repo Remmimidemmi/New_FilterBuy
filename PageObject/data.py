@@ -3,7 +3,8 @@ import time
 
 
 class RegistrationCreds:
-    REGISTRATION_EMAIL = "user_" + str(time.time()) + "@gmail.com"
+    REGISTRATION_EMAIL_ONE = "user_" + str(time.time()) + "@gmail.com"
+    REGISTRATION_EMAIL_TWO = "user_" + str(time.time()) + "@gmail.com"
     INCORRECT_REGISTRATION_EMAIL = "inc_user" + str((time.time())) + "@test.test"
     PASSWORD = "123"
     FIRST_NAME = "Test" + str(random.randint(1, 99999))

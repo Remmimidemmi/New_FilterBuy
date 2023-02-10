@@ -25,7 +25,7 @@ class LoginPageLocators:
     ERROR_RESET_PASSWORD_MESSAGE = (By.CSS_SELECTOR, "#password-reset-error")
     RESET_PASSWORD_LINK = (By.CSS_SELECTOR, "#reset-your-password")
     FORGOT_PASSWORD_LINK = (By.CSS_SELECTOR, "#password-reset")
-    SIGN_UP_LINK_AFTER_FORGOT = (By.CSS_SELECTOR, "#password-reset-signup")
+    SIGN_UP_LINK_AFTER_FORGOT = (By.CSS_SELECTOR, "#password-reset-signup") #reset-your-password
     RESET_PASSWORD_FIELD = (By.CSS_SELECTOR, "#password-reset-email")
     RESET_PASSWORD_SUBMIT_BTN = (By.CSS_SELECTOR, "#password-reset-submit")
     NEW_PASSWORD_RESET_FIELD = (By.CSS_SELECTOR, "#id_new_password1")
@@ -70,7 +70,8 @@ class NewCustomersLocators:
     HELLO_BUSINESS_USER_TEXT = (By.CSS_SELECTOR, "#account-header")
     CUSTOMER_DETAILS_BUTTON = (By.XPATH, '//*[@id="customersTable"]/div/div[2]/div[2]/div/div/div/div/div/div[1]/div['
                                          '5]/span[1]/a')
-    USER_NAME_FROM_DETAILS = (By.XPATH, '//*[@id="root"]/div[1]/div[3]/div/div/main/div/div/h2/text()')
+    USER_NAME_FROM_DETAILS = (By.XPATH, '//*[@id="root"]/div[1]/div[3]/div/div/main/div/div/div/div[2]/div['
+                                        '2]/div/div/div/div[1]/div[2]/div[2]')
     CUSTOMER_INFORMATION_INSCR = (By.XPATH, '//*[@id="root"]/div[1]/div[3]/div/div/main/div/div/div/div[1]/div[1]/h2')
 
 

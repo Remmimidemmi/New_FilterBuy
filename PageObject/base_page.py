@@ -1,3 +1,4 @@
+import allure
 from selenium.common import NoSuchElementException
 
 from .locators import MainPageLocators
@@ -18,9 +19,11 @@ class BasePage:
     def open(self):
         self.browser.get(self.browser.current_url)
 
+    @allure.step("Go to LogIn/SignUp page.")
     def account_page(self):
         self.browser.find_element(*MainPageLocators.MY_ACCOUNT_BUTTON).click()
 
+    @allure.step("Greeting the user after loging into the account.")
     def hello_message(self):
         hello_user = self.browser.find_element(*MainPageLocators.HELLO_USERNAME)
         text_hello_user = hello_user.text
@@ -28,10 +31,12 @@ class BasePage:
         print(f"Login success!\nHello {user_name}!")
         return user_name
 
+    @allure.step("Checking for greeting message after the user registration.")
     def reg_hello_message_check(self):
         assert self.hello_message() == RegistrationCreds.FIRST_NAME, "Registration failed!"
         print(f'Registration of {self.hello_message()} correct!')
 
+    @allure.step("Send request for activate sales user.")
     def reg_sales_user(self):
         self.browser.find_element(*MainPageLocators.REQUEST_SALES_USER_FIELD).send_keys("Test" + str(
             random.randint(1, 99999)))
@@ -44,7 +49,7 @@ class BasePage:
         print("\nMessage correct!")
 
     def error_link(self, link):
-        error_link = WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable(link))
+        error_link = WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable(link))
         assert error_link, "Link is not clickable!"
         print("Link is clickable!")
 

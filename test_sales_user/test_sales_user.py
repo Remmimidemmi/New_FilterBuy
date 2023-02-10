@@ -1,6 +1,8 @@
 import time
-import pytest
+import random
 
+import pytest
+import allure
 from ..PageObject.sales_user_page import SalesUserPage
 from ..PageObject.data import LogInCreds, NewCustomerData, RegistrationCreds
 from ..PageObject.URLs import Urls
@@ -11,13 +13,14 @@ from ..PageObject.inscriptions import ErrorMessages
 from ..PageObject.locators import NewCustomersLocators
 
 
+@allure.suite("Sales User suit")
 class TestSalesUserReg:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
         page.account_page()
-        page.common_user_registration()
+        page.common_user_registration(email=RegistrationCreds.REGISTRATION_EMAIL_TWO)
 
     @pytest.mark.test_1
     def test_register_sales_user(self, browser):
@@ -32,12 +35,13 @@ class TestSalesUserReg:
         logout_page = LoginPage(browser)
         logout_page.common_user_logout()
         logout_page.account_page()
-        logout_page.login_after_registration()
+        logout_page.login_after_registration(email=RegistrationCreds.REGISTRATION_EMAIL_TWO)
         sales_user_page = SalesUserPage(browser)
         sales_user_page.go_to_sales_user()
         time.sleep(2)
 
 
+@allure.suite("Sales User suit")
 class TestNewCustomer():
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
@@ -48,30 +52,33 @@ class TestNewCustomer():
 
     @pytest.mark.test_2
     def test_new_customer_without_shipping_address(self, browser):
+        user_email = "user_" + str(time.time()) + "@gmail.com"
+        user_name = "PoguCo" + str(random.randint(1, 99999))
         page = SalesUserPage(browser)
         page.go_to_sales_user()
-        page.new_customer_correct_email()
-        page.new_customer_information(NewCustomerData.BUSINESS_NAME)
+        page.new_customer_correct_email(email=user_email)
+        page.new_customer_information(business_name=user_name)
         page.new_main_contact()
         page.submit_button()
-        page.new_customer_check()
+        page.new_customer_check(email=user_email)
 
     @pytest.mark.test_3
     def test_new_customer_with_shipping_address(self, browser):
+        user_email = "user_" + str(time.time()) + "@gmail.com"
         page = SalesUserPage(browser)
         page.go_to_sales_user()
-        page.new_customer_correct_email()
+        page.new_customer_correct_email(email=user_email)
         page.new_customer_information(NewCustomerData.BUSINESS_NAME)
         page.new_main_contact()
         page.new_shipping_address()
         page.submit_button()
-        page.new_customer_check()
+        page.new_customer_check(email=user_email)
 
     @pytest.mark.test_4
     def test_new_customer_with_filling_spaces(self, browser):
         page = SalesUserPage(browser)
         page.go_to_sales_user()
-        page.new_customer_correct_email()
+        page.new_customer_correct_email(email=RegistrationCreds.REGISTRATION_EMAIL_ONE)
         page.new_customer_information("           ")
         page.new_main_contact()
         page.error_message(NewCustomersLocators.EMPTY_FIELD_NEW_CUSTOMER_MESSAGE,
@@ -79,10 +86,11 @@ class TestNewCustomer():
 
     @pytest.mark.test_5
     def test_new_customer_incorrect_email(self, browser):
+        user_name = "PoguCo" + str(random.randint(1, 99999))
         page = SalesUserPage(browser)
         page.go_to_sales_user()
         page.new_customer_incorrect_email()
-        page.new_customer_information(NewCustomerData.BUSINESS_NAME)
+        page.new_customer_information(business_name=user_name)
         page.new_main_contact()
         page.new_shipping_address()
         page.submit_button()

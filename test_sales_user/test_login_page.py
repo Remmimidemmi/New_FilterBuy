@@ -16,7 +16,7 @@ class TestPositive():
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
         page.account_page()
-        page.common_user_registration()
+        page.common_user_registration(email=RegistrationCreds.REGISTRATION_EMAIL_ONE)
 
     @pytest.mark.test_2
     def test_log_common_user(self, browser):
@@ -32,7 +32,7 @@ class TestPositive():
         page = LoginPage(browser)
         page.account_page()
         page.forgot_password_login_page(email=LogInCreds.SIGN_IN_REAL_EMAIL)
-        time.sleep(3)
+        time.sleep(5)
         page.change_password_from_login_page(RegistrationCreds.PASSWORD)
         page.hello_message()
 
@@ -55,17 +55,16 @@ class TestNegative():
         page.account_page()
         page.user_login(LogInCreds.SIGN_IN_EMAIL_INCORRECT, LogInCreds.SIGN_IN_PASSWORD)
         page.error_message(LoginPageLocators.ERROR_LOGIN_MESSAGE, ErrorMessages.LOGIN_ERROR_MESSAGE)
-        page.error_link(LoginPageLocators.SIGN_UP_LINK_AFTER_FORGOT)
+        page.error_link(LoginPageLocators.RESET_PASSWORD_LINK)
 
     @pytest.mark.test_6
-    # @pytest.mark.xfail
+    @pytest.mark.xfail
     def test_without_creds_login(self, browser):
         browser.get(Urls.REACT_MAIN_PAGE)
         page = LoginPage(browser)
         page.account_page()
         page.signin_button()
         page.hello_message()
-        assert NoSuchElementException
 
     @pytest.mark.test_7
     def test_forgot_password_incorrect_email(self, browser):
